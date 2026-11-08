@@ -1,7 +1,15 @@
 class Timesheet {
-  // Minimal on purpose: only the test's case is covered; validation comes with later tests.
+  // Hours per project, keyed by project name.
+  timesheets = new Map();
+
+  // Minimal on purpose: no validation yet; later tests will drive it.
   submitTimesheet(projectName, duration) {
+    this.timesheets.set(projectName, duration);
     return true;
+  }
+
+  getTimesheets() {
+    return [...this.timesheets];
   }
 }
 
