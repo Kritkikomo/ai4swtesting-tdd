@@ -6,3 +6,11 @@ test('submitting a timesheet with a project name and hours returns true', () => 
   const result = timesheet.submitTimesheet('Project 1', 8);
   expect(result).toBe(true);
 });
+
+test('timesheets that are added can be retrieved as a list', () => {
+  const timesheet = new Timesheet();
+  timesheet.submitTimesheet('Project 1', 8);
+  timesheet.submitTimesheet('Project 2', 4);
+  timesheet.submitTimesheet('Project 3', 2);
+  expect(timesheet.getTimesheets()).toHaveLength(3);
+});
