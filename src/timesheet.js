@@ -4,12 +4,20 @@ class Timesheet {
 
   // Minimal on purpose: no validation yet; later tests will drive it.
   submitTimesheet(projectName, duration) {
-    this.timesheets.set(projectName, duration);
+    if (this.timesheets.has(projectName)) {
+      this.timesheets.set(projectName, this.timesheets.get(projectName) + duration);
+    } else {
+      this.timesheets.set(projectName, duration);
+    }
     return true;
   }
 
   getTimesheets() {
     return [...this.timesheets];
+  }
+
+  getTotalTimesheetHours(projectName) {
+    return this.timesheets.get(projectName);
   }
 }
 
